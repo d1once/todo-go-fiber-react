@@ -1,6 +1,5 @@
 import { Button, HStack, Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
-import { nanoid } from "nanoid";
 
 function AddTodo({ addTodo }) {
   const toast = useToast();
@@ -17,9 +16,8 @@ function AddTodo({ addTodo }) {
       });
       return;
     }
-    debugger;
     const todo = {
-      body: content,
+      title: content,
     };
 
     addTodo(todo);

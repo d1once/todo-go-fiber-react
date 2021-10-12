@@ -22,13 +22,6 @@ function App() {
     }
   }, []);
 
-  // function deleteTodo(id) {
-  //   const newTodos = todos.filter((todo) => {
-  //     return todo.id !== id;
-  //   });
-  //   setTodos(newTodos);
-  // }
-
   const deleteTodo = async (id) => {
     await axios.delete(`http://localhost:8000/todos/${id}`);
     const newTodos = todos.filter((todo) => {
@@ -37,14 +30,10 @@ function App() {
     setTodos(newTodos);
   };
 
-  // function addTodo(todo) {
-  //   setTodos([...todos, todo]);
-  // }
-
   const addTodo = async (todo) => {
-    debugger;
-    const newTodo = await axios.post("http://localhost:8000/todos", { todo });
-    console.log(newTodo);
+    const response = await axios.post("http://localhost:8000/todos", todo);
+    const { data } = response;
+    setTodos([...todos, data]);
   };
 
   const { colorMode, toggleColorMode } = useColorMode();
